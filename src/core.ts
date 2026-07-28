@@ -17,10 +17,11 @@ export interface Model {
 
 export type Msg =
   | { readonly kind: "reset" }
+  | { readonly kind: "click" }
   | { readonly kind: "key"; readonly event: KeyEvent }
   | { readonly kind: "exit" };
 
-export const viewUnbound = ["key", "exit"] as const;
+export const viewUnbound = ["click", "key", "exit"] as const;
 
 export function commandMsg(name: string): Msg | null {
   if (name === "exit") return { kind: "exit" };
@@ -42,6 +43,8 @@ export function update(model: Model, msg: Msg): Model | [Model, Cmd<Msg>] {
   switch (msg.kind) {
     case "reset":
       return { ...model, count: 0 };
+    case "click":
+      return { ...model, count: model.count + 1 };
     case "key":
       if (msg.event.control && msg.event.key === "backspace") {
         return [model, Cmd.quitApp()];

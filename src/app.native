@@ -2,8 +2,11 @@
      build time and hot-reloaded while `native dev` runs. Fields bind
      by the names core.ts wrote ({tickCount}); exported single-model
      helpers bind too ({total}). Validate with: native check -->
-<column gap="12" padding="16">
-  <row gap="8" main="center" cross="center" grow="1">
-    <text>{count}</text>
-  </row>
-</column>
+<stack>
+  <button variant="ghost" on-press="click" label="click area" grow="1" />
+  <column gap="12" padding="16">
+    <row gap="8" main="center" cross="center" grow="1">
+      <text size="display">{count}</text>
+    </row>
+  </column>
+</stack>
