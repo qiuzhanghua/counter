@@ -3,7 +3,7 @@
      by the names core.ts wrote ({tickCount}); exported single-model
      helpers bind too ({total}). Validate with: native check -->
 <stack>
-  <button variant="ghost" on-press="click" label="click area" grow="1" />
+  <button variant="ghost" background="background" on-press="click" label="click area" grow="1" />
   <column gap="12" padding="16">
     <row gap="8" main="center" cross="center" grow="1">
       <text size="display">{count}</text>
