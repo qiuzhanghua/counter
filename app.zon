@@ -1,0 +1,38 @@
+.{
+    .id = "dev.native_sdk.counter",
+    .name = "counter",
+    .display_name = "Counter",
+    .description = "A counter that lives in one native window.",
+    .version = "0.1.0",
+    .icons = .{"assets/icon.png"},
+    .platforms = .{"macos", "windows"},
+    .permissions = .{ "view", "command" },
+    .capabilities = .{ "native_views", "gpu_surfaces" },
+    .shell = .{
+        .windows = .{
+            .{
+                .label = "main",
+                .title = "Counter",
+                .width = 480,
+                .height = 320,
+                .restore_state = false,
+                .restore_policy = "center_on_primary",
+                .views = .{
+                    .{ .label = "main-canvas", .kind = "gpu_surface", .fill = true, .role = "Counter canvas", .accessibility_label = "Counter",                 .gpu_backend = "software", .gpu_pixel_format = "bgra8_unorm", .gpu_present_mode = "timer", .gpu_alpha_mode = "opaque", .gpu_color_space = "srgb", .gpu_vsync = true },
+                },
+            },
+        },
+    },
+    .security = .{
+        .navigation = .{
+            .allowed_origins = .{ "zero://app", "zero://inline" },
+            .external_links = .{ .action = "deny" },
+        },
+    },
+    .web_engine = "system",
+    .cef = .{ .dir = "third_party/cef/macos", .auto_install = false },
+    .shortcuts = .{
+        .{ .id = "exit", .key = "backspace", .modifiers = .{ "control" } },
+        .{ .id = "reset", .key = "escape" },
+    },
+}
